@@ -10,3 +10,13 @@ class DataIngestionConfig(BaseModel):
     model_config = {
         "frozen": True  # This makes the model immutable
     }
+
+class DataValidationConfig(BaseModel):
+    root_dir: Path
+    STATUS_FILE: str
+    unzip_data_dir: Path
+    all_schema: dict
+
+    model_config = {
+        "frozen": True
+    }
