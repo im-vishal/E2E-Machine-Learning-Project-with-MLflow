@@ -29,3 +29,16 @@ class DataTransformationConfig(BaseModel):
     model_config = {
         "frozen": True
     }
+
+class ModelTrainerConfig(BaseModel):
+    root_dir: Path
+    train_data_path: Path
+    test_data_path: Path
+    modelName: str
+    alpha: float
+    l1_ratio: float
+    target_column: str
+
+    model_config = {
+        "frozen": True
+    }
