@@ -20,3 +20,12 @@ class DataValidationConfig(BaseModel):
     model_config = {
         "frozen": True
     }
+
+
+class DataTransformationConfig(BaseModel):
+    root_dir: Path
+    data_path: Path
+
+    model_config = {
+        "frozen": True
+    }
