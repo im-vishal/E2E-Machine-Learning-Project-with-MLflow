@@ -7,7 +7,8 @@ import joblib
 from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
-from typing import Any
+from typing import Any, List
+import os
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
@@ -35,17 +36,34 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         raise e
     
 
+# @ensure_annotations
+# def create_directories(path_to_directories: List[str], verbose: bool = True) -> None:
+#     """Create list of directories.
+
+#     Args:
+#         path_to_directories (List[str]): list of paths of directories.
+#         verbose (bool, optional): whether to log creation. Defaults to True.
+#     """
+#     if not isinstance(path_to_directories, list) or not all(isinstance(item, str) for item in path_to_directories):
+#         raise TypeError("path_to_directories must be a list of strings")
+
+#     for path in path_to_directories:
+#         Path(path).mkdir(parents=True, exist_ok=True)
+#         if verbose:
+#             logger.info(f"Created directory at: {path}")
+
+
 @ensure_annotations
-def create_directories(path_to_directories: list, verbose=True) -> None:
+def create_directories(path_to_directories: list, verbose=True):
     """create list of directories
 
     Args:
         path_to_directories (list): list of path of directories
-        ignore_log (bool, optional): ignore if multiple dirs to be created. Defaults to False.
+        ignore_log (bool, optional): ignore if multiple dirs is to be created. Defaults to False.
     """
-
     for path in path_to_directories:
-        Path(path).mkdir(parents=True, exist_ok=True)
+        # logger.info(f"path is: {path}")
+        os.makedirs(path, exist_ok=True)
         if verbose:
             logger.info(f"created directory at: {path}")
 
